@@ -5,7 +5,7 @@ let titleUrl = apiUrl+'titles/'
 titleUrl = titleUrl + '?sort_by=-imdb_score'
 
 // Make a GET request using the Fetch API for movies
-async function fetchData(titleUrl){
+async function fetchDataMovies(titleUrl){
   let arrayMovies = [];
   let nextPage = titleUrl;
 
@@ -28,7 +28,7 @@ async function fetchData(titleUrl){
 }
 
 // Called function for movies to display all best rated movies
-fetchData(titleUrl).then(resultList => {
+fetchDataMovies(titleUrl).then(resultList => {
   console.log(resultList);
   
   let meilleurFilm = resultList[0]
@@ -38,18 +38,20 @@ fetchData(titleUrl).then(resultList => {
   let bestRatedMovies = resultList.slice(1, 8)
   console.log("bestRatedMovies: ")
   console.log(bestRatedMovies)
-  const movieSection = document.querySelector(".best_movie");
-  var movieDiv = document.createElement("div");
+  const movieTitle = document.querySelectorAll("#best-movie div h4 b");
+  movieTitle[0].innerHTML = meilleurFilm.title
 
-  movieDiv.innerText = meilleurFilm.title;
-  movieSection.appendChild(movieDiv)
+  //const movieDescription = document.querySelectorAll("#best-movie div p");
+  //movieDescription[0].innerHTML = meilleurFilm.movieDescription
+
+  const movieImage = document.querySelectorAll("#best-movie img");
+  movieImage[0].setAttribute("src", meilleurFilm.image_url)
   
-  const moviesSection = document.querySelector(".best_rated_movies");
+  const moviesSection = document.querySelectorAll("#best-rated-movies article");
+  let i = 0
   bestRatedMovies.forEach(movie => {
-    var movieDiv = document.createElement("div");
-
-    movieDiv.innerText = movie.title;
-    moviesSection.appendChild(movieDiv)
+    moviesSection[i].getElementsByTagName("h3")[0].innerText = movie.title;
+    i++;
   });
 })
 .catch(error => { console.error ('Error:',error)});

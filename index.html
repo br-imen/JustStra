@@ -5,20 +5,165 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="static/style.css">
 <script src="js/script.js"></script>
+
 <body>
-<div class="best_movie">
-    <h2>Meilleur Film</h2>
-</div>
+    <div class="navigation-bar">
+        <div id="navigation-container">
+            <h2 class="logo">JustStreamIT</h2>
+            <ul>
+                <li><a href="#acceuil">Acceuil</a></li>
+                <li><a href="#categories">Categories</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal hidden">
+        <h2> the Modal will be hidden and appear on click</h2>
+        <div class="flex">
+            <img src="" width="50px" height="50px" alt="image du film" />
+            <button class="btn-close">⨉</button>
+          </div>
+          <div>
+            <h3>Le Titre du film</h3>
+            <p>
+                <ul>
+                <li>Le genre complet du film</li>
+                <li>Sa date de sortie</li>
+                <li>Son Rated</li>
+                <li>Son score Imdb</li>
+                <li>Son réalisateur</li>
+                <li>La liste des acteurs</li>
+                <li>Sa durée</li>
+                <li>Le pays d’origine</li>
+                <li>Le résultat au Box Office</li>
+                <li>Le résumé du film</li>
+                </ul>
+            </p>
+          </div>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <div class="content-movies">
+
+        <div class="card wide" id="best-movie">
+            <img src="/Users/joy/code/op-project_6/img/zootopia.jpg" alt="zootopia" style="width:100%">
+            <div class="card-content">
+                <h4><b>zootopia</b></h4>  
+                <button class="btn btn-open">Open Modal</button>
+                <p>Description</p>
+            </div>
+        </div>
 
 
-<div class="best_rated_movies">
-    <h2>Les Meilleurs Films notés</h2>
-</div>
+        <h2>Les Meilleurs Films notés</h2>
 
+        <div class="card-container" id="best-rated-movies">
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
 
-<div class="categories">
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
 
-</div>
+            </div>
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Name categorie 2</h2>
+
+        <div class="card-container" id="categorie-2">
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+
+            </div>
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+        </div>
+
+        <h2>Name categorie 3</h2>
+
+        <div class="card-container" id="categorie-3">
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+
+            </div>
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
+                <div class="card-content">
+                    <h3>Name Movie</h3>
+                    <button class="btn btn-open">Open Modal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>JustStreamIT</h3>
+    </footer>
 
 </body>
 </html>
