@@ -12,8 +12,7 @@ async function fetchDataMovieById(movieId){
 //by imdb score
 async function fetchDataMovies(titleUrl){
   let arrayMovies = [];
-  let nextPage = titleUrl;
-  
+  let nextPage = titleUrl; 
   while (nextPage) {
     const response = await fetch(nextPage);
     const data = await response.json();
@@ -27,8 +26,7 @@ async function fetchDataMovies(titleUrl){
     else{
       nextPage = null
     }
-  }
-  
+  } 
   return arrayMovies;
 }
 
@@ -37,7 +35,6 @@ titleUrl = titleUrl + '?sort_by=-imdb_score'
 
 // Called function for movies to display all best rated movies
 fetchDataMovies(titleUrl).then(resultList => {
-  
 // Best Movie
   let meilleurFilm = resultList[0]
   title = document.getElementById("title-best-movie")
@@ -45,7 +42,9 @@ fetchDataMovies(titleUrl).then(resultList => {
   const movieImage = document.querySelector(".best-movie");
   movieImage.setAttribute("src", meilleurFilm.image_url)
   movieImage.setAttribute("id",meilleurFilm.id)
-
+    movieImage.addEventListener("click", function () {
+      openModal(movieImage);
+  });
 // Seven best movies 
   let bestRatedMovies = resultList.slice(1, 8)
   let j = 0
@@ -54,7 +53,13 @@ fetchDataMovies(titleUrl).then(resultList => {
     list_images[j].setAttribute("src", movie.image_url);
     list_images[j].setAttribute("id", movie.id);
     j++;
+    list_images.forEach(element => {
+      element.addEventListener("click", function () {
+        openModal(element);
+    });
+    });
   })
+
 })
 
 
@@ -77,10 +82,13 @@ async function fetchDataCategories(categoriesUrl){
   }
   return arrayCategories;
 }
-let categoriesUrl = apiUrl+'genres/'
+
+
+
 
 
 // Get three categories and print on html:
+let categoriesUrl = apiUrl+'genres/'
 fetchDataCategories(categoriesUrl).then(resultList => {
   let categories = resultList.slice(0,3);
   element1 = document.getElementById("categorie1");
@@ -92,14 +100,10 @@ fetchDataCategories(categoriesUrl).then(resultList => {
   })
 
 
-  // Best movies by action categorie
+// Best movies by action categorie
  let movieActionUrl = titleUrl + '&genre=action'
-
  fetchDataMovies(movieActionUrl).then(listAction => {
-  //console.log("list action");
-  //console.log(listAction);
   let bestActionMovies = listAction.slice(0, 7)
-  //console.log(bestActionMovies)
   const list_images = document.querySelectorAll("#item-list2 .item")
   for(let i=0; i <7; i++){
     if (i < bestActionMovies.length){
@@ -110,18 +114,19 @@ fetchDataCategories(categoriesUrl).then(resultList => {
       list_images[i].classList.add("hidden")
     }
   }
+  list_images.forEach(element => {
+    element.addEventListener("click", function () {
+      openModal(element);
+  });
+  });
 
  })
 
 
    // Best movies by adult categorie
    let movieAdultUrl = titleUrl + '&genre=adult'
-
    fetchDataMovies(movieAdultUrl).then(listAdult => {
-    //console.log("list adult");
-    //console.log(listAdult);
     let bestAdultMovies = listAdult.slice(0, 7)
-    //console.log(bestAdultMovies)
     const list_images = document.querySelectorAll("#item-list3 .item")
     for(let i=0; i <7; i++){
       if (i < bestAdultMovies.length){
@@ -132,17 +137,19 @@ fetchDataCategories(categoriesUrl).then(resultList => {
         list_images[i].classList.add("hidden")
       }
     }
+    list_images.forEach(element => {
+      element.addEventListener("click", function () {
+        openModal(element);
+    });
+    });
+
    })
   
 
      // Best movies by adventure categorie
      let movieAdventureUrl = titleUrl + '&genre=adventure'
-
      fetchDataMovies(movieAdventureUrl).then(listAdventure => {
-      //console.log("list Adventure");
-      //console.log(listAdventure);
       let bestAdventureMovies = listAdventure.slice(0, 7)
-      //console.log(bestAdventureMovies)
       const list_images = document.querySelectorAll("#item-list4 .item")
       for(let i=0; i <7; i++){
         if (i < bestAdventureMovies.length){
