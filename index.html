@@ -4,7 +4,6 @@
 <title>JustStreamIt</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="static/style.css">
-<script src="js/script.js"></script>
 
 <body>
     <div class="navigation-bar">
@@ -18,152 +17,176 @@
     </div>
 
     <div class="modal hidden">
-        <h2> the Modal will be hidden and appear on click</h2>
+        <h3>Le Titre du film</h3>
         <div class="flex">
             <img src="" width="50px" height="50px" alt="image du film" />
             <button class="btn-close">⨉</button>
           </div>
           <div>
-            <h3>Le Titre du film</h3>
-            <p>
-                <ul>
-                <li>Le genre complet du film</li>
-                <li>Sa date de sortie</li>
-                <li>Son Rated</li>
-                <li>Son score Imdb</li>
-                <li>Son réalisateur</li>
-                <li>La liste des acteurs</li>
-                <li>Sa durée</li>
-                <li>Le pays d’origine</li>
-                <li>Le résultat au Box Office</li>
-                <li>Le résumé du film</li>
-                </ul>
-            </p>
+            <ul>
+                <li>Le genre complet du film: 
+                    <p></p>
+                </li>
+                <li>Sa date de sortie: 
+                    <p></p>
+                </li>
+                <li>Son Rated: 
+                    <p></p>
+                </li>
+                <li>Son score Imdb: 
+                    <p></p>
+                </li>
+                <li>Son réalisateur: 
+                    <p></p>
+                </li>
+                <li>La liste des acteurs: 
+                    <p></p>
+                </li>
+                <li>Sa durée: 
+                    <p></p>
+                </li>
+                <li>Le pays d’origine: 
+                    <p></p>
+                </li>
+                <li>Le résultat au Box Office:
+                    <p></p> </li>
+                <li>Le résumé du film: 
+                    <p></p>
+                </li>
+            </ul>
           </div>
     </div>
+
     <div class="overlay hidden"></div>
 
-    <div class="content-movies">
-
-        <div class="card wide" id="best-movie">
-            <img src="/Users/joy/code/op-project_6/img/zootopia.jpg" alt="zootopia" style="width:100%">
-            <div class="card-content">
-                <h4><b>zootopia</b></h4>  
-                <button class="btn btn-open">Open Modal</button>
-                <p>Description</p>
-            </div>
-        </div>
-
-
-        <h2>Les Meilleurs Films notés</h2>
-
-        <div class="card-container" id="best-rated-movies">
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-
-            </div>
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-        </div>
-
-        <h2>Name categorie 2</h2>
-
-        <div class="card-container" id="categorie-2">
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-
-            </div>
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-        </div>
-
-        <h2>Name categorie 3</h2>
-
-        <div class="card-container" id="categorie-3">
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-
-            </div>
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/Users/joy/code/op-project_6/img/disney-pixar.jpg" alt="pixar" style="width:100%"> 
-                <div class="card-content">
-                    <h3>Name Movie</h3>
-                    <button class="btn btn-open">Open Modal</button>
-                </div>
-            </div>
+    <div class="container-best">
+        <img id="" class="best-movie" src="/Users/joy/code/op-project_6/img/zootopia.jpg" alt="zootopia" >
+        <div class="bottom-left">
+            <h4><b id="title-best-movie">zootopia</b></h4>  
+            <p>Description</p>
         </div>
     </div>
+
+
+        
+    <div class="all-container">
+        <h2>Les Meilleurs Films notés</h2>
+        <div class="container">
+            <div class="carousel-view">
+                <button id="prev-btn1" class="prev-btn1">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-left">
+                        <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z" />
+                      </svg>
+                </button>
+
+                <div id="item-list1" class="item-list1">
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                </div>
+                <button id="next-btn1" class="next-btn1">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-right">
+                        <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
+                    </svg>
+                </button>
+            </div>-
+        </div>
+
+            
+        <h2 id="categorie1">Name categorie 1</h2>
+        <div class="container">
+            <div class="carousel-view">
+                <button id="prev-btn2" class="prev-btn2">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-left">
+                        <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z" />
+                      </svg>
+                </button>
+
+                <div id="item-list2" class="item-list2">
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                </div>
+                <button id="next-btn2" class="next-btn2">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-right">
+                        <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <h2 id="categorie2">Name categorie 2</h2>
+        <div class="container">
+            <div class="carousel-view">
+                <button id="prev-btn3" class="prev-btn3">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-left">
+                        <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z" />
+                      </svg>
+                </button>
+
+                <div id="item-list3" class="item-list3">
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                </div>
+                <button id="next-btn3" class="next-btn3">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-right">
+                        <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        <h2 id="categorie3">Name categorie 3</h2>       
+        <div class="container">
+            <div class="carousel-view">
+                <button id="prev-btn4" class="prev-btn4">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-left">
+                        <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z" />
+                      </svg>
+                </button>
+
+                <div id="item-list4" class="item-list4">
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                    <img id="" class="item" src="" alt="demo image" />
+                </div>
+                <button id="next-btn4" class="next-btn4">
+                    <svg viewBox="0 0 512 512" width="20" title="chevron-circle-right">
+                        <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    
+
+    </div>
+
+
 
     <footer>
         <h3>JustStreamIT</h3>
     </footer>
 
 </body>
+
+<script src="js/script.js"></script>
 </html>
