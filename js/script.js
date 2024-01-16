@@ -40,10 +40,18 @@ fetchDataMovies(titleUrl).then(resultList => {
   title = document.getElementById("title-best-movie")
   title.innerHTML= meilleurFilm.title
   const movieImage = document.querySelector(".best-movie");
-  movieImage.setAttribute("src", meilleurFilm.image_url)
-  movieImage.setAttribute("id",meilleurFilm.id)
-    movieImage.addEventListener("click", function () {
-      openModal(movieImage);
+  movieImage.setAttribute("src", meilleurFilm.image_url);
+  movieImage.setAttribute("id",meilleurFilm.id);
+  fetchDataMovieById(meilleurFilm.id).then(result => {
+    description = document.querySelector(".bottom-left p");
+    description.innerHTML = result.description
+   })
+  movieImage.addEventListener("click", function () {
+    openModal(movieImage);
+  });
+  button = document.querySelector(".button-info");
+  button.addEventListener("click", function () {
+    openModal(movieImage);
   });
 // Seven best movies 
   let bestRatedMovies = resultList.slice(1, 8)
