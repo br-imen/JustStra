@@ -281,3 +281,25 @@ const closeModal = function () {
 
 closeModalBtn.addEventListener("click", closeModal);
 
+
+// script dropdown
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+const dropDownButton = document.querySelector(".dropbtn");
+const myDropdown = document.getElementById("myDropdown");
+
+const togglemyDropdown = function () {
+  console.log("hello");
+  if (myDropdown.classList.contains('hidden')) {
+    myDropdown.classList.remove('hidden');
+    console.log("remove hidden");
+  }
+  else {
+    myDropdown.classList.toggle('hidden');
+  }
+};
+dropDownButton.addEventListener("click", togglemyDropdown);
+
+
+// Display categories.
+

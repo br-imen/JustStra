@@ -6,15 +6,20 @@
 <link rel="stylesheet" href="static/style.css">
 
 <body>
-    <div class="navigation-bar">
-        <div id="navigation-container">
-            <h2 class="logo">JustStreamIT</h2>
-            <ul>
-                <li><a href="#acceuil">Acceuil</a></li>
-                <li><a href="#categories">Categories</a></li>
-            </ul>
+    <div class="navbar">
+        <h1 class="logo">JustStreamIt</h1>
+        <a class="push" href="#home">Home</a>
+        <div class="dropdown">
+        <button class="dropbtn">Categories
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content hidden" id="myDropdown">
+          <a href="#categorie1">Categorie1</a>
+          <a href="#categorie2">Categorie2</a>
+          <a href="#categorie3">Categorie3</a>
         </div>
-    </div>
+        </div> 
+      </div>
 
     <div class="modal hidden">
         <h3>Le Titre du film</h3>
@@ -184,7 +189,7 @@
 
 
     <footer>
-        <h3>JustStreamIT</h3>
+        <h3>JustStreamIt</h3>
     </footer>
 
 </body>
