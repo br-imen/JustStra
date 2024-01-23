@@ -1,14 +1,14 @@
 // Specify the API endpoint for user data
 const apiUrl = 'http://localhost:8000/api/v1/';
 
-// Make a GET request using the Fetch API for movie
+// Make a GET request using the Fetch API for movie by id
 async function fetchDataMovieById(movieId){
   const response = await fetch(apiUrl+'titles/'+movieId);
   const data = await response.json();
   return data;
 }
 
-// Make a GET request using the Fetch API for movies output an array of 8 movies filtred 
+// Make a GET request using the Fetch API for movies outputs an array of 8 best movies filtred 
 //by imdb score
 async function fetchDataMovies(titleUrl){
   let arrayMovies = [];
@@ -33,9 +33,10 @@ async function fetchDataMovies(titleUrl){
 let titleUrl = apiUrl+'titles/'
 titleUrl = titleUrl + '?sort_by=-imdb_score'
 
-// Called function for movies to display all best rated movies
+
+// Called function for movies to display all best rated movies (id,image)
 fetchDataMovies(titleUrl).then(resultList => {
-// Best Movie
+  // The first movie of that list is the best Movie
   let meilleurFilm = resultList[0]
   title = document.getElementById("title-best-movie")
   title.innerHTML= meilleurFilm.title
@@ -53,15 +54,15 @@ fetchDataMovies(titleUrl).then(resultList => {
   button.addEventListener("click", function () {
     openModal(movieImage);
   });
-// Seven best movies 
+  // The rest of 8 movies are the seven best movies 
   let bestRatedMovies = resultList.slice(1, 8)
   let j = 0
   bestRatedMovies.forEach(movie => { 
-    const list_images = document.querySelectorAll("#item-list1 .item")
-    list_images[j].setAttribute("src", movie.image_url);
-    list_images[j].setAttribute("id", movie.id);
+    const listImages = document.querySelectorAll("#item-best-movies .item")
+    listImages[j].setAttribute("src", movie.image_url);
+    listImages[j].setAttribute("id", movie.id);
     j++;
-    list_images.forEach(element => {
+    listImages.forEach(element => {
       element.addEventListener("click", function () {
         openModal(element);
     });
@@ -71,7 +72,7 @@ fetchDataMovies(titleUrl).then(resultList => {
 })
 
 
-// Function to Get all categories 
+// Function to call to Get an array of categories 
 async function fetchDataCategories(categoriesUrl){
   let arrayCategories = [];
   let nextPage = categoriesUrl;
@@ -80,7 +81,8 @@ async function fetchDataCategories(categoriesUrl){
     const data = await response.json();
     const results = data.results;
     arrayCategories = arrayCategories.concat(results);
-    if (arrayCategories.length < 3)
+    // I get 10 then I go to the next page to limit the time of waiting
+    if (arrayCategories.length < 10)
     {
       nextPage = data.next;
     }
@@ -91,107 +93,81 @@ async function fetchDataCategories(categoriesUrl){
   return arrayCategories;
 }
 
+// Shuffle a list and get random num items
+function getMultipleRandom(arr, num) {
+  const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
+  return shuffled.slice(0, num);
+}
 
-
-
-// Get three categories and print on html:
-let categoriesUrl = apiUrl+'genres/'
+// Get movies from 3 random categories and display 7 movies from each in carrosels.
+// called fetchDataCategories to get a list of categories
+// called fetchDataMovies to display movies of each categorie (set src of image and id)
+let categoriesUrl = apiUrl+'genres/?page=2'
 fetchDataCategories(categoriesUrl).then(resultList => {
-  let categories = resultList.slice(0,3);
-  element1 = document.getElementById("categorie1");
-  element2 = document.getElementById("categorie2");
-  element3 = document.getElementById("categorie3");
-  element1.innerHTML = categories[0].name;
-  element2.innerHTML  = categories[1].name;
-  element3.innerHTML  = categories[2].name;
+    let categories = getMultipleRandom(resultList, 3);
+    let categorieFields = document.querySelectorAll("h2.categorie")
+    let dropdownCategorieFields = document.querySelectorAll("#myDropdown a")
+    for(let i=0; i < 3; i++){
+          categorieFields[i].innerHTML = categories[i].name;
+          categorieFields[i].setAttribute("id", categories[i].name)
+          dropdownCategorieFields[i].innerHTML = categories[i].name;
+          dropdownCategorieFields[i].setAttribute("href","#"+categories[i].name)
+          let categorieUrl = titleUrl + '&genre=' + categories[i].name
+          fetchDataMovies(categorieUrl).then(listMovies => {
+            let bestMovies = listMovies.slice(0,7)
+            const listImages = document.querySelectorAll("#item-list"+i+" .item")
+            // the condition  i < bestMovies.length : to display only movies that exist 
+            for(let i=0; i <7; i++){
+              if(i < bestMovies.length){
+                listImages[i].setAttribute("src", bestMovies[i].image_url);
+                listImages[i].setAttribute("id", bestMovies[i].id);
+              }
+              else{
+                listImages[i].classList.add("hidden")
+              }
+            }
+            listImages.forEach(element => {
+              element.addEventListener("click", function () {
+                openModal(element);
+            });
+            });
+
+          })
+     }
+
   })
 
 
-// Best movies by action categorie
- let movieActionUrl = titleUrl + '&genre=action'
- fetchDataMovies(movieActionUrl).then(listAction => {
-  let bestActionMovies = listAction.slice(0, 7)
-  const list_images = document.querySelectorAll("#item-list2 .item")
-  for(let i=0; i <7; i++){
-    if (i < bestActionMovies.length){
-      list_images[i].setAttribute("src", bestActionMovies[i].image_url);
-      list_images[i].setAttribute("id", bestActionMovies[i].id);
-    }
-    else{
-      list_images[i].classList.add("hidden")
-    }
-  }
-  list_images.forEach(element => {
-    element.addEventListener("click", function () {
-      openModal(element);
-  });
-  });
-
- })
-
-
-   // Best movies by adult categorie
-   let movieAdultUrl = titleUrl + '&genre=adult'
-   fetchDataMovies(movieAdultUrl).then(listAdult => {
-    let bestAdultMovies = listAdult.slice(0, 7)
-    const list_images = document.querySelectorAll("#item-list3 .item")
-    for(let i=0; i <7; i++){
-      if (i < bestAdultMovies.length){
-        list_images[i].setAttribute("src", bestAdultMovies[i].image_url);
-        list_images[i].setAttribute("id", bestAdultMovies[i].id);
-      }
-      else{
-        list_images[i].classList.add("hidden")
-      }
-    }
-    list_images.forEach(element => {
-      element.addEventListener("click", function () {
-        openModal(element);
-    });
-    });
-
-   })
-  
-
-     // Best movies by adventure categorie
-     let movieAdventureUrl = titleUrl + '&genre=adventure'
-     fetchDataMovies(movieAdventureUrl).then(listAdventure => {
-      let bestAdventureMovies = listAdventure.slice(0, 7)
-      const list_images = document.querySelectorAll("#item-list4 .item")
-      for(let i=0; i <7; i++){
-        if (i < bestAdventureMovies.length){
-          list_images[i].setAttribute("src", bestAdventureMovies[i].image_url);
-          list_images[i].setAttribute("id", bestAdventureMovies[i].id);
-        }
-        else{
-          list_images[i].classList.add("hidden")
-        }
-      }
-      list_images.forEach(element => {
-        element.addEventListener("click", function () {
-          openModal(element);
-      });
-      });
-      
-     })
-
-
 // Scrolling carrosels:
+const itemWidth = 350
+const padding = 10
+
+const prevListBestMovies = document.getElementById('prev-btn-best-movies');
+const nextListBestMovies = document.getElementById('next-btn-best-movies');
+const listBestMovies = document.getElementById('item-best-movies');
+
+prevListBestMovies.addEventListener('click',()=>{
+  listBestMovies.scrollLeft -= itemWidth + padding
+});
+nextListBestMovies.addEventListener('click',()=>{
+  console.log('next : listBestMovies')
+  console.log(listBestMovies)
+  listBestMovies.scrollLeft += itemWidth + padding
+})
+
+  const prev0 = document.getElementById('prev-btn0');
   const prev1 = document.getElementById('prev-btn1');
   const prev2 = document.getElementById('prev-btn2');
-  const prev3 = document.getElementById('prev-btn3');
-  const prev4 = document.getElementById('prev-btn4');
+  
+  const next0 = document.getElementById('next-btn0');
   const next1 = document.getElementById('next-btn1');
   const next2 = document.getElementById('next-btn2');
-  const next3 = document.getElementById('next-btn3');
-  const next4 = document.getElementById('next-btn4');
+  
+  const list0 = document.getElementById('item-list0');
   const list1 = document.getElementById('item-list1');
   const list2 = document.getElementById('item-list2');
-  const list3 = document.getElementById('item-list3');
-  const list4 = document.getElementById('item-list4');
-  const itemWidth = 350
-  const padding = 10
+
   prev1.addEventListener('click',()=>{
     list1.scrollLeft -= itemWidth + padding
   })
@@ -204,51 +180,54 @@ fetchDataCategories(categoriesUrl).then(resultList => {
   next2.addEventListener('click',()=>{
     list2.scrollLeft += itemWidth + padding
   })
-  prev3.addEventListener('click',()=>{
-    list3.scrollLeft -= itemWidth + padding
+
+  prev0.addEventListener('click',()=>{
+    list0.scrollLeft -= itemWidth + padding
   })
-  next3.addEventListener('click',()=>{
-    list3.scrollLeft += itemWidth + padding
+  next0.addEventListener('click',()=>{
+    list0.scrollLeft += itemWidth + padding
   })
-  prev4.addEventListener('click',()=>{
-    list4.scrollLeft -= itemWidth + padding
-  })
-  next4.addEventListener('click',()=>{
-    list4.scrollLeft += itemWidth + padding
-  })
+
+ // Work to optimaze scroll buttons:
+      // prevButtonList = document.querySelectorAll(".prev-btn");
+      // nextButtonList = document.querySelectorAll(".next-btn");
+      // moviesScrollLists = document.querySelectorAll(".item-list");
+
+      // prevButtonList.forEach(button => {
+      //   button.addEventListener('click', function() {
+      //     var MovieList = button.getAttribute('data-list-id');
+      //     MovieList.scrollLeft -= itemWidth + padding;
+      //   })
+      // });
+      
+      // prevButtonList.forEach(button => {
+      //   button.addEventListener('click', function() {
+      //     var MovieList = button.getAttribute('data-list-id');
+      //     MovieList.scrollLeft += itemWidth + padding;
+      //   })
+      // });
+
 
 
 
 // Modal functionality:
 // Modal appear on clicking the image how??
-// have a list of all id images
-// add an event to get the id on click
-// to fetch the data 
-// to update the modal
-// to modify hidden
-
-
+// 1. Have a list of all id images
+// 2. Add an event to get the id on click
+// 3. Fetch the data with called function fetchDataMovieById
+// 4. Update the modal and display it with removing hidden
+// 5. add hidden to close modal 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const closeModalBtn = document.querySelector(".btn-close");
-
-
 const openModal = function (element) {
     tagsDoc = document.querySelectorAll('.modal p');
-    title = document.querySelector('.modal h3');
     img = document.querySelector('.modal img');
     id = element.id;
-    console.log("id _______")
-    console.log(id)
     fetchDataMovieById(id).then(result => {
-        //listData.push(result[0].image_url)
-        //listData.push(result[0].title)
-        console.log("result *****")
-        console.log(result)
-        title.innerHTML = result.title
         img.setAttribute("src", result.image_url)
-
         listData = [];
+        listData.push(result.title)
         listData.push(result.genres)
         listData.push(result.date_published)
         listData.push(result.rated)
@@ -257,14 +236,9 @@ const openModal = function (element) {
         listData.push(result.actors)
         listData.push(result.duration)
         listData.push(result.countries)
-        listData.push(result.usa_gross_income)
+        listData.push(result.worldwide_gross_income)
         listData.push(result.long_description)
-
-        console.log("listData #######")
-        console.log(listData)
         for (let i = 0; i < listData.length; i++ ) {
-          console.log(listData[i])
-          console.log(tagsDoc[i])
           tagsDoc[i].innerHTML = listData[i]
         }
 
@@ -289,10 +263,8 @@ const dropDownButton = document.querySelector(".dropbtn");
 const myDropdown = document.getElementById("myDropdown");
 
 const togglemyDropdown = function () {
-  console.log("hello");
   if (myDropdown.classList.contains('hidden')) {
     myDropdown.classList.remove('hidden');
-    console.log("remove hidden");
   }
   else {
     myDropdown.classList.toggle('hidden');
@@ -301,5 +273,4 @@ const togglemyDropdown = function () {
 dropDownButton.addEventListener("click", togglemyDropdown);
 
 
-// Display categories.
 
